@@ -99,7 +99,7 @@ page.on('PAGE_CHANGE', function(ev) {
 
 ## 使用自定义元素
 
-使用自定义元素，要在option.text和option.className下均添加同名义项，并修改option.structure，添加{%义项%}来引用。
+使用自定义元素，要在option.text和option.className下均添加同名义项，并修改option.structure，添加{%义项名%}来引用。
 
 代码示意：
 ```javascript
