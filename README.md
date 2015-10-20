@@ -22,3 +22,5 @@ page.on('PAGE_CHANGE', function(ev) {
 ## 参数说明
 
 ## 事件说明
+
+## 使用自定义元素
