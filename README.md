@@ -13,7 +13,7 @@ pagecreater 是一个简单的js翻页代码生成组件，相较于其它js翻�
 
 基本调用方式
 ```javascript
-PageCreater(option);
+PageCreater({option|Object});
 ```
 
 
@@ -70,7 +70,7 @@ page.on('PAGE_CHANGE', function(ev) {
 ```javascript
 {
 	type : 'click_item', // 事件类型
-	target : target // 点击的对象
+	target : {target|HTMLElement} // 点击的对象
 }
 ```
 
@@ -80,8 +80,8 @@ page.on('PAGE_CHANGE', function(ev) {
 ```javascript
 {
 	type : 'click_page', // 事件类型
-	target : target // 点击的对象
-	page : page // 目标页码
+	target : {target|HTMLElement} // 点击的对象
+	page : {page|Integer} // 目标页码
 }
 ```
 
@@ -91,9 +91,9 @@ page.on('PAGE_CHANGE', function(ev) {
 ```javascript
 {
 	type : 'page_change', // 事件类型
-	from : from_page, // 来源页码
-	to : to_page, // 目标页码
-	max : max_page // 最大页数
+	from : {from_page|Integer}, // 来源页码
+	to : {to_page|Integer}, // 目标页码
+	max : {max_page|Integer} // 最大页数
 }
 ```
 
