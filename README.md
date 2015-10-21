@@ -6,7 +6,7 @@ pagecreater 是一个简单的js翻页代码生成组件，相较于其它js翻�
 - 组件默认采用自定义标签，随机生成dom id，并依据随机id创建css样式表，避免样式冲突。
 - 不依赖于任何类库，支持amd模块化
 - 使用自定义事件处理交互，默认会抛出三种自定义事件：CLICK_ITEM（点击任意元素）、CLICK_PAGE（点击翻页相关元素）、PAGE_CHANGE（翻页发生）
-- 对dom使用requestAnimationFrame实现异步渲染
+- 对dom使用requestAnimationFrame实现异步渲染（不支持raf的浏览器使用setTimeout降级）
 - 通过自定义模板，可以简单实现元素组合，同时支持插入自定义的翻页元素
 
 ## 代码示例
