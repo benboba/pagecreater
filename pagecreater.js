@@ -249,9 +249,8 @@ page.on('PAGE_CHANGE', function(ev) {
 			var self = this;
 			raf(function() { // 异步执行
 				var element = document.createElement(self.option.pageTag);
-				var html = [];
 				
-				html.push(self.option.structure.replace(/{%(.+?)%}/g, function(match, str) {
+				self.page.innerHTML = self.option.structure.replace(/{%(.+?)%}/g, function(match, str) {
 					var result = [], current = self.option.current, max = self.option.max, display = self.option.display, pg, className;
 					if (self.option.className[str] && self.option.text[str]) {
 						if (str === 'page') {
@@ -311,9 +310,7 @@ page.on('PAGE_CHANGE', function(ev) {
 						}
 					}
 					return result.join('');
-				}));
-				
-				self.page.innerHTML = html.join('');
+				});
 				
 				if (pageChange) { // 如果是切换页面，则抛出自定义事件
 					self.trigger('PAGE_CHANGE', {
