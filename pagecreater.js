@@ -48,11 +48,11 @@ page.on('PAGE_CHANGE', function(ev) {
 			ellipsis : 'pagecreater_ellipsis', // 省略号
 			disable : 'pagecreater_disable' // 不可点
 		},
-		structure : '{%prev%}{%first%}{%page%}{%last%}{%next%}',
-		wrap : document.body,
-		max : 0,
-		current : 0,
-		display : 3,
+		structure : '{%prev%}{%first%}{%page%}{%last%}{%next%}', // 结构模板
+		wrap : document.body, // 插入到哪个容器
+		max : 0, // 最大有多少页
+		current : 0, // 当前默认在第几页
+		display : 3, // 当前页码前后各展示多少页
 		pageTag : 'page', // 容器标签，建议使用自定义标签
 		pageItemTag : 'pageitem', // 页码对象标签，建议使用自定义标签
 		alwaysFirst : false, // 始终显示第一页
@@ -409,9 +409,9 @@ page.on('PAGE_CHANGE', function(ev) {
 		 * 销毁组件
 		 */
 		destroy : function() {
-			this.page.addEventListener('click', this.clickEvent);
+			this.page.removeEventListener('click', this.clickEvent);
 			this.option.wrap.removeChild(this.page);
-			document.body.removeChild(this.page_style);
+			this.page_style && document.body.removeChild(this.page_style);
 		}
 	};
 
