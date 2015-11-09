@@ -221,7 +221,7 @@ page.on('PAGE_CHANGE', function(ev) {
 				'}',
 			].join('');
 			
-			style = style.replace(/{%(.+?)%}/g, function(match, str) {
+			style = style.replace(/{%\s*(.+?)\s*%}/g, function(match, str) {
 				switch (str) {
 					case 'id':
 						return option.id;
@@ -250,13 +250,13 @@ page.on('PAGE_CHANGE', function(ev) {
 			raf(function() { // 异步执行
 				var element = document.createElement(self.option.pageTag);
 				
-				self.page.innerHTML = self.option.structure.replace(/{%(.+?)%}/g, function(match, str) {
+				self.page.innerHTML = self.option.structure.replace(/{%\s*(.+?)\s*%}/g, function(match, str) {
 					var result = [], current = self.option.current, max = self.option.max, display = self.option.display, pg, className;
 					if (self.option.className[str] && self.option.text[str]) {
 						if (str === 'page') {
 							if (current - display > 0) {
 								if (self.option.alwaysFirst) {
-									result.push('<', self.option.pageItemTag, ' class="', self.option.className.page, '" data-click="page" data-pg="0">', self.option.text.page.replace('{%pg%}', 1), '</', self.option.pageItemTag, '>');
+									result.push('<', self.option.pageItemTag, ' class="', self.option.className.page, '" data-click="page" data-pg="0">', self.option.text.page.replace(/{%\s*pg\s*%}/g, 1), '</', self.option.pageItemTag, '>');
 								}
 								if (self.option.showEllipsis && current - display > 1) {
 									result.push('<', self.option.pageItemTag, ' class="', self.option.className.ellipsis, '">', self.option.text.ellipsis, '</', self.option.pageItemTag, '>');
@@ -264,14 +264,14 @@ page.on('PAGE_CHANGE', function(ev) {
 							}
 							for (var i = Math.max(0, current - display), l = Math.min(current + display, max - 1); i <= l; i++) {
 								className = (i === current) ? self.option.className.current : self.option.className.page;
-								result.push('<', self.option.pageItemTag, ' class="', className, '" data-click="page" data-pg="', i, '">', self.option.text.page.replace('{%pg%}', i + 1), '</', self.option.pageItemTag, '>');
+								result.push('<', self.option.pageItemTag, ' class="', className, '" data-click="page" data-pg="', i, '">', self.option.text.page.replace(/{%\s*pg\s*%}/g, i + 1), '</', self.option.pageItemTag, '>');
 							}
 							if (current + display < max - 1) {
 								if (self.option.showEllipsis && current + display < max - 2) {
 									result.push('<', self.option.pageItemTag, ' class="', self.option.className.ellipsis, '">', self.option.text.ellipsis, '</', self.option.pageItemTag, '>');
 								}
 								if (self.option.alwaysLast) {
-									result.push('<', self.option.pageItemTag, ' class="', self.option.className.page, '" data-click="page" data-pg="', max - 1, '">', self.option.text.page.replace('{%pg%}', max), '</', self.option.pageItemTag, '>');
+									result.push('<', self.option.pageItemTag, ' class="', self.option.className.page, '" data-click="page" data-pg="', max - 1, '">', self.option.text.page.replace(/{%\s*pg\s*%}/g, max), '</', self.option.pageItemTag, '>');
 								}
 							}
 						} else {
@@ -302,7 +302,7 @@ page.on('PAGE_CHANGE', function(ev) {
 							}
 							result.push('>');
 							if (pg !== null) {
-								result.push(self.option.text[str].replace('{%pg%}', pg + 1));
+								result.push(self.option.text[str].replace(/\{%\s*pg\s*%\}/g, pg + 1));
 							} else {
 								result.push(self.option.text[str]);
 							}
