@@ -62,6 +62,24 @@ page.on('PAGE_CHANGE', function(ev) {
 }
 ```
 
+## PageCreater实例方法说明
+
+### {PageCreater}.on
+
+监听自定义事件
+
+### {PageCreater}.off
+
+取消监听自定义事件
+
+### {PageCreater}.trigger
+
+抛出自定义事件
+
+### {PageCreater}.destroy
+
+销毁当前实例
+
 ## 事件说明
 
 ### CLICK_ITEM事件
