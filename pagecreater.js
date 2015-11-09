@@ -302,7 +302,7 @@ page.on('PAGE_CHANGE', function(ev) {
 							}
 							result.push('>');
 							if (pg !== null) {
-								result.push(self.option.text[str].replace(/\{%\s*pg\s*%\}/g, pg + 1));
+								result.push(self.option.text[str].replace(/{%\s*pg\s*%}/g, pg + 1));
 							} else {
 								result.push(self.option.text[str]);
 							}
