@@ -62,7 +62,7 @@ page.on('PAGE_CHANGE', function(ev) {
 }
 ```
 
-## PageCreater实例方法说明
+## PageCreater API说明
 
 ### {PageCreater}.on
 
